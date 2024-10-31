@@ -1,6 +1,6 @@
 package com.users.user.dto;
 
-import com.users.user.enums.UserRole;
+import com.users.user.db.enums.UserRole;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

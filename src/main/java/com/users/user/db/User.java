@@ -1,5 +1,5 @@
-package com.users.user;
-import com.users.user.enums.UserRole;
+package com.users.user.db;
+import com.users.user.db.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

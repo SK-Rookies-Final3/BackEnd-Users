@@ -1,5 +1,5 @@
 package com.users.user.dto;
-import com.users.user.enums.UserRole;
+import com.users.user.db.enums.UserRole;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -3,7 +3,7 @@ package com.users.user.dto;
 import com.users.common.annotation.Converter;
 import com.users.common.error.ErrorCode;
 import com.users.common.exception.ApiException;
-import com.users.user.User;
+import com.users.user.db.User;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 

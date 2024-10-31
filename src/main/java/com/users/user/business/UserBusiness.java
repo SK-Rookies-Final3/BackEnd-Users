@@ -2,12 +2,11 @@ package com.users.user.business;
 import com.users.common.annotation.Business;
 import com.users.token.business.TokenBusiness;
 import com.users.token.controller.model.TokenResponse;
-import com.users.user.User;
+import com.users.user.db.User;
 import com.users.user.dto.UserLoginRequest;
 import com.users.user.dto.UserMapper;
 import com.users.user.dto.UserRegisterRequest;
 import com.users.user.dto.UserResponse;
-import com.users.user.dto.UserUpdateRequest;
 import com.users.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor

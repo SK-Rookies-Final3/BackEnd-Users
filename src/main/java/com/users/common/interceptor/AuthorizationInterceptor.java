@@ -3,7 +3,7 @@ import com.users.common.error.ErrorCode;
 import com.users.common.error.TokenErrorCode;
 import com.users.common.exception.ApiException;
 import com.users.token.business.TokenBusiness;
-import com.users.user.UserRepository;
+import com.users.user.db.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
