@@ -1,18 +1,14 @@
 package com.users.user.dto;
-
 import com.users.common.annotation.Converter;
 import com.users.common.error.ErrorCode;
 import com.users.common.exception.ApiException;
 import com.users.user.db.User;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-
 @RequiredArgsConstructor
 @Converter
 public class UserMapper {
-
     public User toEntity(UserRegisterRequest request) {
-
         // Request 데이터 유효성 검사 추가
         if (request == null) {
             throw new ApiException(ErrorCode.NULL_POINT, "UserRegisterRequest Null");
@@ -27,7 +23,6 @@ public class UserMapper {
     }
 
     public User toEntity(UserUpdateRequest request) {
-
         // Request 데이터 유효성 검사 추가
         if (request == null) {
             throw new ApiException(ErrorCode.NULL_POINT, "UserRegisterRequest Null");
@@ -46,7 +41,6 @@ public class UserMapper {
     }
 
     public UserResponse toResponse(User user) {
-
         return Optional.ofNullable(user)
                 .map(it -> UserResponse.builder()
                         .id(user.getId())

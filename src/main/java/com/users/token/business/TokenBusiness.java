@@ -49,7 +49,4 @@ public class TokenBusiness {
         // TokenService에서 이메일을 추출하는 메서드를 호출
         return tokenService.validationToken(token);
     }
-
-
-
 }

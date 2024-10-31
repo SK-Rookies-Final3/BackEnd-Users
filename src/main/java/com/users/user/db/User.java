@@ -9,7 +9,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-
 @Entity
 @Table(name = "users")
 @Data

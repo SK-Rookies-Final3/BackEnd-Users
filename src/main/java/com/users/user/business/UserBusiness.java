@@ -52,6 +52,4 @@ public class UserBusiness {
         var userEntity = userService.getUserById(id);
         return userMapper.toResponse((User) userEntity);  // Entity -> Response 변환
     }
-
-
 }

@@ -25,7 +25,6 @@ public class UserService {
     public boolean isUsernameTaken(String username) {
         return userRepository.findByUsername(username).isPresent();
     }
-
     public User register(User user) {
         // 중복 username 확인
         if (isUsernameTaken(user.getUsername())) {

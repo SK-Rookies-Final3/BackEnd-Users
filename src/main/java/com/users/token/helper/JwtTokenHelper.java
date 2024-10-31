@@ -29,7 +29,6 @@ public class JwtTokenHelper implements TokenHelperIfs {
 
     /**
      * 액세스 토큰을 발급하는 메서드
-     *
      * @param data - 토큰에 포함될 클레임 데이터
      * @return - 발행된 액세스 토큰과 만료 정보를 포함하는 TokenDto 객체
      */
@@ -58,7 +57,6 @@ public class JwtTokenHelper implements TokenHelperIfs {
 
     /**
      * 리프레시 토큰을 발급하는 메서드
-     *
      * @param data - 토큰에 포함될 클레임 데이터
      * @return - 발행된 리프레시 토큰과 만료 정보를 포함하는 TokenDto 객체
      */
@@ -87,7 +85,6 @@ public class JwtTokenHelper implements TokenHelperIfs {
 
     /**
      * 토큰의 유효성을 검증하고 클레임 데이터를 반환하는 메서드
-     *
      * @param token - 검증할 JWT 토큰
      * @return - 검증된 토큰의 클레임 데이터 맵
      * @throws ApiException - 검증 실패 시 예외를 발생시킴
@@ -102,6 +99,7 @@ public class JwtTokenHelper implements TokenHelperIfs {
         try {
             // 토큰 검증 및 클레임 파싱
             var result = parser.parseClaimsJws(token);
+
             return new HashMap<>(result.getBody()); // 파싱된 클레임 데이터를 맵으로 반환
 
         } catch (SignatureException e) {
