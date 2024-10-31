@@ -1,5 +1,4 @@
 package com.users.user.business;
-
 import com.users.common.annotation.Business;
 import com.users.token.business.TokenBusiness;
 import com.users.token.controller.model.TokenResponse;
@@ -11,7 +10,6 @@ import com.users.user.dto.UserResponse;
 import com.users.user.dto.UserUpdateRequest;
 import com.users.user.service.UserService;
 import lombok.RequiredArgsConstructor;
-
 @RequiredArgsConstructor
 @Business
 public class UserBusiness {

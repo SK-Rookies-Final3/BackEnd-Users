@@ -13,11 +13,9 @@ import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 @RequiredArgsConstructor
 @Service
 public class UserService {
-
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
@@ -97,8 +95,6 @@ public class UserService {
         return userMapper.toResponse(updatedUser);
     }
 
-
-
     /**
      * 회원 정보 조회:
      * 1. 사용자 ID로 회원 정보를 조회
@@ -114,20 +110,12 @@ public class UserService {
      * 1. 사용자 ID로 회원 정보를 조회
      * 2. 해당 사용자 삭제
      */
-    public void deleteUser(String accessToken) {
-
-        var idString = tokenBusiness.validationAccessToken(accessToken);
-        int id = Integer.valueOf(idString);
-
-        // 사용자 ID로 사용자 조회
-        User user = userRepository.findById(id)
+    public void deleteUserById(int id) {
+        // ID를 기반으로 사용자를 조회하고, 없으면 예외 발생
+        var user = userRepository.findById(id)
                 .orElseThrow(() -> new ApiException(ErrorCode.NOT_FOUND, "사용자를 찾을 수 없습니다."));
 
-        // 사용자 삭제
+        // 사용자가 존재하면 삭제
         userRepository.delete(user);
     }
-
-
-
 }
-

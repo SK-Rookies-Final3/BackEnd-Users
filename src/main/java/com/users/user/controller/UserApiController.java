@@ -47,15 +47,16 @@ public class UserApiController {
         return Api.OK(userResponse);
     }
 
-    @DeleteMapping("/exit")
+    // 회원 탈퇴
+    @DeleteMapping("/exit/{id}")
     public Api<Void> deleteUser(@RequestHeader("Authorization") String accessToken) {
-
 
         //Business에 만들기
         var idString = tokenBusiness.validationAccessToken(accessToken);
         int id = Integer.valueOf(idString);
 
-        userService.deleteUser(accessToken); // 반환값 없이 호출
+        // id 값을 기반으로 회원 탈퇴 진행
+        userService.deleteUserById(id); // 반환값 없이 호출
         return Api.OK(null); // 또는 Api.NO_CONTENT(); 등의 방식으로 설정
     }
 }
