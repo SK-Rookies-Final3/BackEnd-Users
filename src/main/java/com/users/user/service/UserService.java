@@ -1,5 +1,4 @@
 package com.users.user.service;
-
 import com.users.common.error.ErrorCode;
 import com.users.common.exception.ApiException;
 import com.users.token.business.TokenBusiness;
@@ -37,6 +36,10 @@ public class UserService {
 
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
+
+        //nickname을 username으로 설정
+        user.setNickname(user.getNickname() != null ? user.getNickname() : user.getUsername());
+
         user.setCreatedAt(LocalDateTime.now());  // createdAt 설정
         return userRepository.save(user);
     }
