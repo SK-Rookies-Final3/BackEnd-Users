@@ -2,26 +2,26 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 565393064007.dkr.ecr.ap-northeast-2.amazonaws.com
+      - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_URL
       - chmod +x ./gradlew
       - git config --global credential.helper "!aws codecommit credential-helper $@"
       - git config --global credential.UseHttpPath true
-      - git clone https://git-codecommit.ap-northeast-2.amazonaws.com/v1/repos/helm-argocd
+      - git clone $HELMCHART_URL
 
   build:
     commands:
       - ./gradlew clean build --exclude-task test
-      - docker build -t backend-users-ecr:latest .
-      - docker tag backend-users-ecr:latest 565393064007.dkr.ecr.ap-northeast-2.amazonaws.com/backend-users-ecr:latest
+      - docker build -t $BACKEND_ECR_REPO:latest .
+      - docker tag $BACKEND_ECR_REPO:latest $ECR_URL/$BACKEND_ECR_REPO:latest
 
   post_build:
     commands:
-     - docker push 565393064007.dkr.ecr.ap-northeast-2.amazonaws.com/backend-users-ecr:latest
-     - sed -i "s/buildTimestamp:.*/buildTimestamp:\"$(date +%Y%m%d%H%M%S)\"/" helm-argocd/helm-charts/backend/values.yaml
-     - git config --global user.name "CodeBuild"
-     - git config --global user.email "codebuild@example.com"
-     - cd helm-argocd  # helm-argocd로 이동
-     - git checkout main || git checkout -b main 
-     - git add helm-charts/backend/values.yaml
-     - git commit -m "Update build timestamp to $(date +%Y%m%d%H%M%S)" || echo "No changes to commit"
-     - git push origin main || echo "No changes to push"
+      - docker push $ECR_URL/$BACKEND_ECR_REPO:latest
+      - sed -i "s/backendTimestamp:.*/backendTimestamp:\"$(date +%Y%m%d%H%M%S)\"/" HelmChart-for-Argo/helm-charts/values.yaml
+      - git config --global user.name "CodeBuild"
+      - git config --global user.email "codebuild@example.com"
+      - cd helm-argocd
+      - git checkout main || git checkout -b main 
+      - git add helm-charts/backend/values.yaml
+      - git commit -m "Update build timestamp to $(date +%Y%m%d%H%M%S)" || echo "No changes to commit"
+      - git push origin main || echo "No changes to push"
