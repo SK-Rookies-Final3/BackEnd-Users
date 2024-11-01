@@ -16,7 +16,6 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.resource.ResourceHttpRequestHandler;
 
 import java.util.Objects;
-
 @Slf4j
 @RequiredArgsConstructor
 @Component
