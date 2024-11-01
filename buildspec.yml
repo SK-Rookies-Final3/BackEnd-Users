@@ -22,6 +22,6 @@ phases:
       - git config --global user.email "codebuild@example.com"
       - cd HelmChart-for-Argo
       - git checkout main || git checkout -b main 
-      - git add helm-charts/backend/values.yaml
+      - git add helm-charts/values.yaml
       - git commit -m "Update build timestamp to $(date +%Y%m%d%H%M%S)" || echo "No changes to commit"
       - git push origin main || echo "No changes to push"
