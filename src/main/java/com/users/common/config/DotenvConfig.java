@@ -13,7 +13,7 @@ public class DotenvConfig implements ApplicationListener<ApplicationEnvironmentP
     public void onApplicationEvent(ApplicationEnvironmentPreparedEvent event) {
         // .env 파일이 위치한 경로를 명시적으로 설정합니다.
         Dotenv dotenv = Dotenv.configure()
-                .directory("C:/final_project/BackEnd-User-feature-user")
+                .directory("users")
                 .ignoreIfMissing()
                 .load();
 

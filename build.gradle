@@ -23,9 +23,9 @@ repositories {
 	mavenCentral()
 }
 
-ext {
-	set('springCloudVersion', "2023.0.3")
-}
+//ext {
+//	set('springCloudVersion', "2023.0.3")
+//}
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -34,6 +34,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mariadb.jdbc:mariadb-java-client:2.7.4'
 
+	implementation 'jakarta.servlet:jakarta.servlet-api:5.0.0'
 
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	runtimeOnly 'com.mysql:mysql-connector-j'
@@ -60,11 +61,11 @@ dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 }
 
-dependencyManagement {
-	imports {
-		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-	}
-}
+//dependencyManagement {
+//	imports {
+//		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+//	}
+//}
 
 tasks.named('test') {
 	useJUnitPlatform()

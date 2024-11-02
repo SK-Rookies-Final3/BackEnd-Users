@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/open-api")
 @CrossOrigin(origins="http://localhost:3000", allowedHeaders="*")
 public class UserOpenApiController {
-
     private final UserService userService;
     private final UserBusiness userBusiness;
 

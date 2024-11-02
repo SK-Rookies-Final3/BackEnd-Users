@@ -1,18 +1,22 @@
 package com.users.user.controller;
 import com.users.common.api.Api;
-import com.users.common.error.ErrorCode;
-import com.users.common.exception.ApiException;
 import com.users.token.business.TokenBusiness;
 import com.users.user.business.UserBusiness;
 import com.users.user.dto.UserResponse;
 import com.users.user.dto.UserUpdateRequest;
 import com.users.user.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/user")
