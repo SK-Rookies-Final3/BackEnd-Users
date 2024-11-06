@@ -125,11 +125,23 @@ public class UserService {
         userRepository.deleteByUsername(username);
     }
 
+
     //Role 값이 MASTER인 경우
+
 
     //  회원 전체 정보 조회
     public List<User> getAllUsers() {
         // 모든 사용자 조회
         return userRepository.findAll(); // 모든 사용자 조회
+    }
+
+    // 강제 탈퇴
+    public void deleteUserByTargetId(int id) {
+        // ID를 기반으로 사용자를 조회하고, 없으면 예외 발생
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ApiException(ErrorCode.NOT_FOUND, "사용자를 찾을 수 없습니다."));
+
+        // 사용자가 존재하면 삭제
+        userRepository.delete(user);
     }
 }

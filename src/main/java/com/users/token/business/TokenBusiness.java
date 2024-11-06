@@ -47,14 +47,13 @@ public class TokenBusiness {
         return id;
     }
 
-    public String getUserIdFromToken(String token) {
-        // TokenService에서 이메일을 추출하는 메서드를 호출
-        return tokenService.validationToken(token);
-    }
+//    public String getUserIdFromToken(String token) {
+//        return tokenService.validationToken(token);
+//    }
 
-    public String getUserRoleFromToken(String accessToken) {
-        // 토큰에서 역할 정보를 추출하는 메서드를 호출하여 role 변수에 할당
-        String role = tokenService.validationToken(accessToken);
-        return role;
-    }
+//    public String getUserRoleFromToken(String accessToken) {
+//        // 토큰에서 역할 정보를 추출하는 메서드를 호출하여 role 변수에 할당
+//        String role = String.valueOf(tokenService.validationrole(accessToken));
+//        return role;
+//    }
 }
