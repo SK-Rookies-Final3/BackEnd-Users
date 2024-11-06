@@ -1,0 +1,27 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_URL
+      - chmod +x ./gradlew
+      - git config --global credential.helper "!aws codecommit credential-helper $@"
+      - git config --global credential.UseHttpPath true
+      - git clone $HELMCHART_URL
+
+  build:
+    commands:
+      - ./gradlew clean build --exclude-task test
+      - docker build -t $BACKEND_ECR_REPO:latest .
+      - docker tag $BACKEND_ECR_REPO:latest $ECR_URL/$BACKEND_ECR_REPO:latest
+
+  post_build:
+    commands:
+      - docker push $ECR_URL/$BACKEND_ECR_REPO:latest
+      - sed -i "s/backendTimestamp:.*/backendTimestamp:\"$(date +%Y%m%d%H%M%S)\"/" HelmChart-for-Argo/helm-charts/values.yaml
+      - git config --global user.name "CodeBuild"
+      - git config --global user.email "codebuild@example.com"
+      - cd HelmChart-for-Argo
+      - git checkout main || git checkout -b main 
+      - git add helm-charts/values.yaml
+      - git commit -m "Update build timestamp to $(date +%Y%m%d%H%M%S)" || echo "No changes to commit"
+      - git push origin main || echo "No changes to push"
