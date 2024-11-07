@@ -126,10 +126,10 @@ public class UserService {
     }
 
 
-    public User getUsernameById(Integer id) {
-        return userRepository.findById(id)
+    public String getUsernameById(Integer id) {
+        User user = userRepository.findById(id)
                 .orElseThrow(() -> new ApiException(ErrorCode.NOT_FOUND, "사용자를 찾을 수 없습니다."));
-        //return userRepository.findUsernameById(id);
+        return user.getUsername();  // User 객체에서 username만 반환
     }
 
 

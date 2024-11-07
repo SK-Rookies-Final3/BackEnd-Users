@@ -13,6 +13,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/user")
@@ -61,11 +65,17 @@ public class UserApiController {
         return Api.OK(null); // 또는 Api.NO_CONTENT(); 등의 방식으로 설정
     }
 
-        // 회원 정보 조회 id에서 username
     @GetMapping("/{id}")
-    public Api<UserResponse> getUserInfo(
-            @PathVariable("id") int id) {
-        userService.getUsernameById(id);
-        return Api.OK(userResponse);
+    public Api<Map<String, String>> getUserInfo(@PathVariable("id") int id) {
+        // id로 username을 가져오기
+        String username = userService.getUsernameById(id);
+
+        // 결과를 Map으로 반환 (필드만 포함)
+        Map<String, String> response = new HashMap<>();
+        response.put("username", username);
+
+        // Api.OK를 사용하여 응답 반환
+        return Api.OK(response);
     }
+
 }

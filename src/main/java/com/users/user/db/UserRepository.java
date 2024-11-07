@@ -2,6 +2,9 @@ package com.users.user.db;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
@@ -12,6 +15,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     Optional<User> findInfoByUsername(String username);
     Optional<User> findUsernameByNickname(String nickname);
     Optional<User> findNicknameByUsername(String username);
-    String findUsernameById(Integer id);
+
+    @Query("SELECT u.username FROM User u WHERE u.id = :id")
+    Optional<String> findUsernameById(@Param("id") Integer id);
+
     void deleteByUsername(String username);
 }
