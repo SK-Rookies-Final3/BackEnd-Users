@@ -10,16 +10,21 @@ phases:
 
   build:
     commands:
+      - echo "Starting Gradle build"
       - ./gradlew clean build --exclude-task test || { echo "Gradle build failed"; exit 1; }
       - echo "Build completed, checking for JAR file:"
-      - ls build/libs/*.jar || { echo "JAR file not found"; exit 1; }
+      - ls build/libs/  # build/libs 경로의 파일 목록을 출력하여 JAR 파일 생성 확인
+      - test -f build/libs/*.jar || { echo "JAR file not found"; exit 1; }  # JAR 파일이 없으면 에러 메시지 출력 후 종료
       - cp build/libs/*.jar app.jar  # Dockerfile에서 사용하기 위해 app.jar로 복사
+      - echo "Docker build 시작"
       - docker build -t $BACKEND_ECR_REPO:latest .
       - docker tag $BACKEND_ECR_REPO:latest $ECR_URL/$BACKEND_ECR_REPO:latest
 
   post_build:
     commands:
+      - echo "Docker 이미지 푸시 시작"
       - docker push $ECR_URL/$BACKEND_ECR_REPO:latest
+      - echo "Helm 차트 업데이트"
       - sed -i "s/backendTimestamp:.*/backendTimestamp:\"$(date +%Y%m%d%H%M%S)\"/" HelmChart-for-Argo/helm-charts/values.yaml
       - git config --global user.name "CodeBuild"
       - git config --global user.email "codebuild@example.com"
