@@ -50,6 +50,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOriginPatterns("*")
                 .allowedMethods("GET", "POST", "DELETE", "PUT", "PATCH")
-                .allowCredentials(true);
+                .allowedHeaders("*") // 허용할 헤더
     }
 }
