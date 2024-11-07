@@ -51,5 +51,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .allowedOriginPatterns("*")
                 .allowedMethods("GET", "POST", "DELETE", "PUT", "PATCH")
                 .allowedHeaders("*") // 허용할 헤더
+                .allowCredentials(true); // 자격 증명 허용
     }
 }
