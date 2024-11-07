@@ -48,9 +48,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOriginPatterns("http://a97ae0a93c06d477a9665bc48f9b0609-613522362.ap-northeast-2.elb.amazonaws.com")
+                .allowedOriginPatterns("*")
                 .allowedMethods("GET", "POST", "DELETE", "PUT", "PATCH")
-                .allowedHeaders("*") // 허용할 헤더
                 .allowCredentials(true);
     }
 }
