@@ -1,6 +1,7 @@
 FROM openjdk:21-jdk
 WORKDIR /app
-COPY app.jar app.jar  # app.jar을 Docker 이미지에 복사
+COPY build/libs/*.jar app.jar
+
 
 EXPOSE 8080
 
