@@ -1,6 +1,6 @@
 FROM openjdk:21-jdk
 WORKDIR /app
-COPY build/libs/*.jar app.jar
+COPY build/libs/app.jar app.jar  # 빌드된 JAR 파일 위치를 명확히 지정
 
 EXPOSE 8080
 
