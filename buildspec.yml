@@ -10,10 +10,10 @@ phases:
 
   build:
     commands:
-      - ./gradlew clean build --exclude-task test
-      - ls build/libs  # 빌드가 정상적으로 완료되었는지 확인
-      - cp build/libs/*.jar app.jar  # app.jar로 복사
-      - ls  # Docker 빌드 전에 파일이 있는지 확인
+      - ./gradlew clean build --exclude-task test || { echo "Gradle build failed"; exit 1; }
+      - echo "Build completed, checking for JAR file:"
+      - ls build/libs/*.jar || { echo "JAR file not found"; exit 1; }
+      - cp build/libs/*.jar app.jar  # Dockerfile에서 사용하기 위해 app.jar로 복사
       - docker build -t $BACKEND_ECR_REPO:latest .
       - docker tag $BACKEND_ECR_REPO:latest $ECR_URL/$BACKEND_ECR_REPO:latest
 
