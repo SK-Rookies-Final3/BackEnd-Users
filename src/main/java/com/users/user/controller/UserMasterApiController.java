@@ -44,11 +44,6 @@ public class UserMasterApiController {
         }
     }
 
-
-//    //OWNER 권한 부여
-//    @PatchMapping("owner/{id}")
-
-
     // 회원 강퇴 (MASTER 권한 필요)
     @DeleteMapping("/exit/{targetId}")
     public ResponseEntity<Void> deleteUserAsMaster(

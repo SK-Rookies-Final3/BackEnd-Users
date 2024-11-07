@@ -64,7 +64,14 @@ public class UserBusiness {
     }
 
 
-    //master 관련 역할 부여
+    // 회원정보 id로 username 조회
+//    public String getUsernameById(Integer id) {
+//        return userMapper.toResponse((User) userEntity);
+//    }
+
+
+//master 관련 역할 부여
+
     // ID로 사용자 조회 및 역할 체크
     public UserResponse getUserByIdWithRoleCheck(String role) {
         // 역할이 "MASTER"인지 확인

@@ -1,10 +1,9 @@
 package com.users.user.db;
-import com.users.user.dto.UserResponse;
-import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
-
+import org.springframework.stereotype.Repository;
+@Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
     Optional<User> findByUsername(String username);
     Optional<User> findPasswordByUsername(String password);
@@ -13,6 +12,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     Optional<User> findInfoByUsername(String username);
     Optional<User> findUsernameByNickname(String nickname);
     Optional<User> findNicknameByUsername(String username);
-    Optional<User> findById(Integer id);
+    String findUsernameById(Integer id);
     void deleteByUsername(String username);
 }
