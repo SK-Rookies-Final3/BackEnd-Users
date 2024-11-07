@@ -125,7 +125,6 @@ public class UserService {
         userRepository.deleteByUsername(username);
     }
 
-
     public String getUsernameById(Integer id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ApiException(ErrorCode.NOT_FOUND, "사용자를 찾을 수 없습니다."));
@@ -137,8 +136,7 @@ public class UserService {
 
     //  회원 전체 정보 조회
     public List<User> getAllUsers() {
-        // 모든 사용자 조회
-        return userRepository.findAll(); // 모든 사용자 조회
+        return userRepository.findAll();
     }
 
     // 강제 탈퇴
@@ -147,7 +145,6 @@ public class UserService {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ApiException(ErrorCode.NOT_FOUND, "사용자를 찾을 수 없습니다."));
 
-        // 사용자가 존재하면 삭제
         userRepository.delete(user);
     }
 }

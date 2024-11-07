@@ -40,6 +40,26 @@ public class UserMapper {
                 .build();
     }
 
+    public UserResponse toRegisterResponse(User user) {
+        return Optional.ofNullable(user)
+                .map(it -> UserResponse.builder()
+                        .id(user.getId())
+                        .username(user.getUsername())
+                        .password(user.getPassword())
+                        .nickname(user.getUsername())
+                        .address(user.getAddress())
+                        .age(user.getAge())
+                        .gender(user.getGender())
+                        .height(user.getHeight())
+                        .weight(user.getWeight())
+                        .email(user.getEmail())
+                        .role(user.getRole())
+                        .createdAt(user.getCreatedAt())
+                        .lastAccpetedAt(user.getLastAccpetedAt())
+                        .build())
+                .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT, "UserEntity Null"));
+    }
+
     public UserResponse toResponse(User user) {
         return Optional.ofNullable(user)
                 .map(it -> UserResponse.builder()
