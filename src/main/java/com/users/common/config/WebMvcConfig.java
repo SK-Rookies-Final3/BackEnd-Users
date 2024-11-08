@@ -50,7 +50,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOriginPatterns("http://*.elb.amazonaws.com", "http://localhost:3000", "http://175.120.35.228:3000")
                 .allowedMethods("GET", "POST", "DELETE", "PUT", "PATCH")
-                .allowedHeaders("*") // 허용할 헤더
-                .allowCredentials(true); // 자격 증명 허용
+                .allowedHeaders("*")
+                .allowCredentials(true);
     }
 }
