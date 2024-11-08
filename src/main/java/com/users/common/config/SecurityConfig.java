@@ -14,7 +14,7 @@ public class SecurityConfig {
         http
                 .cors(cors -> cors.configurationSource(request -> {
                     CorsConfiguration config = new CorsConfiguration();
-                    config.setAllowedOrigins(List.of("http://localhost:3000", "http://175.120.35.228:3000", "http://*.elb.amazonaws.com", "http://a97ae0a93c06d477a9665bc48f9b0609-613522362.ap-northeast-2.elb.amazonaws.com"));
+                    config.setAllowedOriginPatterns(List.of("http://localhost:3000", "http://175.120.35.228:3000", "http://*.elb.amazonaws.com", "http://a97ae0a93c06d477a9665bc48f9b0609-613522362.ap-northeast-2.elb.amazonaws.com"));
                     config.setAllowedMethods(List.of("GET", "POST", "DELETE", "OPTIONS","PATCH"));
                     config.setAllowedHeaders(List.of("*"));
                     config.setAllowCredentials(true);
