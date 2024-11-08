@@ -45,12 +45,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .excludePathPatterns(DEFAULT_EXCLUDE.toArray(new String[0]));
     }
 
-    // @Override
-    // public void addCorsMappings(CorsRegistry registry) {
-    //     registry.addMapping("/**")
-    //             .allowedOriginPatterns("http://*.elb.amazonaws.com", "http://localhost:3000", "http://175.120.35.228:3000")
-    //             .allowedMethods("GET", "POST", "DELETE", "PUT", "PATCH")
-    //             .allowedHeaders("*")
-    //             .allowCredentials(true);
-    // }
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOriginPatterns("http://*.elb.amazonaws.com", "http://localhost:3000", "http://175.120.35.228:3000")
+                .allowedMethods("GET", "POST", "DELETE", "PUT", "PATCH")
+                .allowedHeaders("*")
+                .allowCredentials(true);
+    }
 }
