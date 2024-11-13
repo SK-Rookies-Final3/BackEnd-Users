@@ -22,13 +22,12 @@ public class UserService {
     private final UserMapper userMapper;
     private final TokenBusiness tokenBusiness;
 
-    // 중복된 username 확인
+    // 중복된 username 확인 (DB에서 직접 확인)
     public boolean isUsernameTaken(String username) {
         return userRepository.existsByUsername(username);
     }
 
     public User register(User user) {
-        // 중복 username 확인
         if (isUsernameTaken(user.getUsername())) {
             throw new ApiException(ErrorCode.BAD_REQUEST);
         }

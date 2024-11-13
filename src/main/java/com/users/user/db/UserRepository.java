@@ -5,7 +5,9 @@ import java.util.Optional;
 import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
+    //username 확인
     boolean existsByUsername(String username);
+
     Optional<User> findByUsername(String username);
     Optional<User> findPasswordByUsername(String password);
     Optional<User> findByNickname(String Nickname);
@@ -14,5 +16,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     Optional<User> findUsernameByNickname(String nickname);
     Optional<User> findNicknameByUsername(String username);
     String findUsernameById(Integer id);
+
     void deleteByUsername(String username);
 }
