@@ -24,7 +24,7 @@ public class UserService {
 
     // 중복된 username 확인
     public boolean isUsernameTaken(String username) {
-        return userRepository.findByUsername(username).isPresent();
+        return userRepository.existsByUsername(username);
     }
 
     public User register(User user) {
@@ -39,7 +39,7 @@ public class UserService {
         //nickname을 username으로 설정
         user.setNickname(user.getNickname() != null ? user.getNickname() : user.getUsername());
 
-        user.setCreatedAt(LocalDateTime.now());  // createdAt 설정
+        user.setCreatedAt(LocalDateTime.now());
         return userRepository.save(user);
     }
 

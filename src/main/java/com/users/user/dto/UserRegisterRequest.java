@@ -15,5 +15,5 @@ public class UserRegisterRequest {
     private String password;
 
     @NotNull
-    private UserRole role;
+    private String role;
 }
