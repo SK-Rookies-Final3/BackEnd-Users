@@ -18,7 +18,6 @@ public class UserMapper {
         return User.builder()
                 .username(request.getUsername())
                 .password(request.getPassword())
-                .role(request.getRole())
                 .build();
     }
 

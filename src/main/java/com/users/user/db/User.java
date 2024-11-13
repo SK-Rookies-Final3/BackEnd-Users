@@ -17,7 +17,6 @@ import java.time.LocalDateTime;
 @SuperBuilder
 @EqualsAndHashCode(callSuper = false) // Lombok 경고 해결
 public class User  {
-    // id 타입을 BaseEntity와 일치시키기 위해 int로 수정
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;

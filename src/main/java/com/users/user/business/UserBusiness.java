@@ -26,7 +26,6 @@ public class UserBusiness {
     private Object userEntity;
     private final UserRepository userRepository; // User 엔터티를 관리하는 리포지토리
 
-
     /*
      * 1. 회원가입(request) -> entity
      * 2. entity -> 데이터베이스에 저장
@@ -63,11 +62,6 @@ public class UserBusiness {
         return userMapper.toResponse((User) userEntity);  // Entity -> Response 변환
     }
 
-
-    // 회원정보 id로 username 조회
-//    public String getUsernameById(Integer id) {
-//        return userMapper.toResponse((User) userEntity);
-//    }
 
 
 //master 관련 역할 부여
