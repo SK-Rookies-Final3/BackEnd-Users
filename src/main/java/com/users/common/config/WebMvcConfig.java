@@ -38,7 +38,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
         // AuthorizationInterceptor 등록
         registry.addInterceptor(authorizationInterceptor)
-                .excludePathPatterns("/public/**", "/open-api/**")
+                .excludePathPatterns("/public/**")
                 .excludePathPatterns("/static/**", "/css/**", "/js/**")
                 .excludePathPatterns("/swagger-ui/**", "/v3/api-docs/**");
     }
@@ -46,7 +46,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:3000")
+                .allowedOrigins("*")
                 .allowedMethods("GET", "POST", "DELETE", "PUT","PATCH")
                 .allowedHeaders("*") // 허용할 헤더
                 .allowCredentials(true);
