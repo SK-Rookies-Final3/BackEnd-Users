@@ -24,18 +24,11 @@ public class UserOpenApiController {
     public ResponseEntity<Api<UserResponse>> register(
             @Valid @RequestBody UserRegisterRequest request
     ) {
-        // username 중복 체크
+        // username 중복 체크 (DB에서 직접 확인)
         if (userService.isUsernameTaken(request.getUsername())) {
             return ResponseEntity.badRequest().build();
         }
         var response = userBusiness.register(request);  // response가 UserResponse 타입이어야 함
-
-        // role이 "owner"인 경우 추가 메시지 포함
-        if ("owner".equalsIgnoreCase(String.valueOf(request.getRole()))) {
-            return ResponseEntity.ok(Api.OKWithExtraMessage(response, "X"));
-        } else {
-            return ResponseEntity.ok(Api.OK(response));
-        }
     }
 
     @PostMapping("/login")
