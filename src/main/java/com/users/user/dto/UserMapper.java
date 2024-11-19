@@ -4,6 +4,8 @@ import com.users.common.error.ErrorCode;
 import com.users.common.exception.ApiException;
 import com.users.user.db.User;
 import java.util.Optional;
+
+import com.users.user.db.enums.UserRole;
 import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Converter
@@ -18,6 +20,7 @@ public class UserMapper {
         return User.builder()
                 .username(request.getUsername())
                 .password(request.getPassword())
+                .role(UserRole.valueOf(request.getRole().toUpperCase()))
                 .build();
     }
 
