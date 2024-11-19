@@ -35,7 +35,6 @@ dependencies {
 	implementation 'org.mariadb.jdbc:mariadb-java-client:2.7.4'
 
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-	runtimeOnly 'com.mysql:mysql-connector-j'
 
 	implementation 'io.jsonwebtoken:jjwt-api:0.12.6'
 	implementation 'io.jsonwebtoken:jjwt-impl:0.12.6'
