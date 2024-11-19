@@ -45,6 +45,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .excludePathPatterns(DEFAULT_EXCLUDE.toArray(new String[0]));
     }
 
+    //front 관련 cors
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
