@@ -31,7 +31,12 @@ public class UserOpenApiController {
         }
         var response = userBusiness.register(request);  // response가 UserResponse 타입이어야 함
 
-        return ResponseEntity.ok(Api.OK(response));
+        // role이 "owner"인 경우 추가 메시지 포함
+        if ("owner".equalsIgnoreCase(String.valueOf(request.getRole()))) {
+            return ResponseEntity.ok(Api.OKWithExtraMessage(response, "X"));
+        } else {
+            return ResponseEntity.ok(Api.OK(response));
+        }
     }
 
     // 로그인
