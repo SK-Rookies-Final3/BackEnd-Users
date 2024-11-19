@@ -27,6 +27,7 @@ phases:
       - echo "Generating unique IMAGE_TAG based on timestamp..."
       - export IMAGE_TAG=$(date +%Y%m%d%H%M%S)
       - echo Building the backend JAR...
+      - chmod +x ./gradlew
       - ./gradlew clean bootJar --exclude-task test
       - echo Building the Docker image...
       - docker build -t $ECR_REPO:$IMAGE_TAG .
