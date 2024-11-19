@@ -29,6 +29,8 @@ public class UserOpenApiController {
             return ResponseEntity.badRequest().build();
         }
         var response = userBusiness.register(request);  // response가 UserResponse 타입이어야 함
+
+        return ResponseEntity.ok(Api.OK(response));
     }
 
     @PostMapping("/login")
