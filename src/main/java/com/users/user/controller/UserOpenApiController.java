@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/open-api")
-@CrossOrigin(origins="http://localhost:3000")  //, allowedHeaders="*"
+@CrossOrigin(origins="http://localhost:3000", allowedHeaders="*")
 public class UserOpenApiController {
 
     private final UserService userService;
@@ -29,6 +29,10 @@ public class UserOpenApiController {
         if (userService.isUsernameTaken(request.getUsername())) {
             return ResponseEntity.badRequest().build();
         }
+
+        // 역할 값 출력 (디버깅)
+        System.out.println("Role: " + request.getRole());
+
         var response = userBusiness.register(request);  // response가 UserResponse 타입이어야 함
 
         // role이 "owner"인 경우 추가 메시지 포함
