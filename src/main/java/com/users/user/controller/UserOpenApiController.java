@@ -20,6 +20,7 @@ public class UserOpenApiController {
     private final UserService userService;
     private final UserBusiness userBusiness;
 
+    // 회원가입
     @PostMapping("/register")
     public ResponseEntity<Api<UserResponse>> register(
             @Valid @RequestBody UserRegisterRequest request
@@ -33,6 +34,7 @@ public class UserOpenApiController {
         return ResponseEntity.ok(Api.OK(response));
     }
 
+    // 로그인
     @PostMapping("/login")
     public ResponseEntity<Api<TokenResponse>> login(
             @Valid @RequestBody UserLoginRequest request
