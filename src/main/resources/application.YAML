@@ -17,7 +17,6 @@ eureka:
     instance-id: USERS:8080  # 고정 값으로 설정
     lease-renewal-interval-in-seconds: 10
     lease-expiration-duration-in-seconds: 30
-    prefer-ip-address: true
 
   resources:
     static-locations: classpath:/static/

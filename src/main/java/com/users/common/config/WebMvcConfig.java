@@ -49,7 +49,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOriginPatterns("http://*.elb.amazonaws.com", "http://localhost:3000", "http://175.120.35.228:3000", "http://a97ae0a93c06d477a9665bc48f9b0609-613522362.ap-northeast-2.elb.amazonaws.com")
+                .allowedOriginPatterns("http://*.elb.amazonaws.com", "http://localhost:3000", "http://175.120.35.228:3000", "https://shortpingoo.shop")
                 .allowedMethods("GET", "POST", "DELETE", "PUT", "PATCH")
                 .allowedHeaders("*")
                 .allowCredentials(true);
