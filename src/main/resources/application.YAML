@@ -11,7 +11,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://192.168.0.157:8088/eureka
+      defaultZone: http://192.168.0.153:8088/eureka
 
   instance:
     instance-id: USERS:8080  # 고정 값으로 설정
