@@ -36,7 +36,7 @@ phases:
       - echo "Docker build 시작"
       - echo Building the Docker image...
       - docker build -t $BACKEND_ECR_REPO:$IMAGE_TAG .
-      - docker tag $ECR_REPO:$IMAGE_TAG $ECR_URL/$BACKEND_ECR_REPO:$IMAGE_TAG
+      - docker tag $BACKEND_ECR_REPO:$IMAGE_TAG $ECR_URL/$BACKEND_ECR_REPO:$IMAGE_TAG
 
   post_build:
     commands:
