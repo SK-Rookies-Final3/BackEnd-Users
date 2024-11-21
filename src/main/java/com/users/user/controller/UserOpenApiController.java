@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/open-api")
-@CrossOrigin(origins="http://localhost:3000", allowedHeaders="*")
+@RequestMapping("/open-api/user")
 public class UserOpenApiController {
 
     private final UserService userService;
