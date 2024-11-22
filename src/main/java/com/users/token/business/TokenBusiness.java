@@ -24,36 +24,22 @@ public class TokenBusiness {
      * 3. converter -> token response로 변경
      */
 
-    public TokenResponse issueToken(User userEntity){
+    public TokenResponse issueToken(User userEntity) {
 
         return Optional.ofNullable(userEntity)
                 .map(user -> {
-                    return user.getId();
-                })
-                .map(user -> {
-                    Integer id = userEntity.getId();
-                    String role = userEntity.getRole().name();
+                    Integer id = user.getId(); // user.getId()를 변수에 할당
+                    String role = user.getRole().name();
                     var accessToken = tokenService.issueAccessToken(id);
                     var refreshToken = tokenService.issueRefreshToken(id);
-                    return tokenConverter.toResponse(accessToken, refreshToken, role);
+                    return tokenConverter.toResponse(accessToken, refreshToken, role, id); // id를 그대로 사용
                 })
-                .orElseThrow(
-                        ()-> new ApiException(ErrorCode.NULL_POINT)
-                );
+                .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }
+
 
     public String validationAccessToken(String accessToken){
         var id = tokenService.validationToken(accessToken);
         return id;
     }
-
-//    public String getUserIdFromToken(String token) {
-//        return tokenService.validationToken(token);
-//    }
-
-//    public String getUserRoleFromToken(String accessToken) {
-//        // 토큰에서 역할 정보를 추출하는 메서드를 호출하여 role 변수에 할당
-//        String role = String.valueOf(tokenService.validationrole(accessToken));
-//        return role;
-//    }
 }
