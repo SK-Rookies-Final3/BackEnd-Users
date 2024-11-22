@@ -19,4 +19,6 @@ public class TokenResponse {
     private String refreshToken;
 
     private String role;
+
+    private int id;
 }

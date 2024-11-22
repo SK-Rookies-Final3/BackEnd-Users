@@ -18,7 +18,8 @@ public class TokenConverter {
     public TokenResponse toResponse(
             TokenDto accessToken,
             TokenDto refreshToken,
-            String role
+            String role,
+            int id
     ) {
         Objects.requireNonNull(accessToken, () -> {
             throw new ApiException(ErrorCode.NULL_POINT);
@@ -32,6 +33,7 @@ public class TokenConverter {
                 .accessTokenExpiredAt(accessToken.getExpiredAt())
                 .refreshToken(refreshToken.getToken())
                 .role(role)
+                .id(id)
                 .build();
     }
 }
