@@ -1,22 +1,22 @@
-server:
-  port: 8080
-
-spring:
-  application:
-    name: USERS
-
-# eureka client 설정 추가
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://192.168.0.153:8088/eureka
-
-  instance:
-    instance-id: USERS:8080  # 고정 값으로 설정
-    lease-renewal-interval-in-seconds: 10
-    lease-expiration-duration-in-seconds: 30
-
-  resources:
-    static-locations: classpath:/static/
+#server:
+#  port: 8080
+#
+#spring:
+#  application:
+#    name: USERS
+#
+## eureka client 설정 추가
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: http://192.168.0.153:8088/eureka
+#
+#  instance:
+#    instance-id: USERS:8080  # 고정 값으로 설정
+#    lease-renewal-interval-in-seconds: 10
+#    lease-expiration-duration-in-seconds: 30
+#
+#  resources:
+#    static-locations: classpath:/static/
