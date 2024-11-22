@@ -39,6 +39,8 @@ public class UserService {
         user.setNickname(user.getNickname() != null ? user.getNickname() : user.getUsername());
 
         user.setCreatedAt(LocalDateTime.now());
+
+        System.out.println(user.getUsername()+"//"+encodedPassword+"//");
         return userRepository.save(user);
     }
 

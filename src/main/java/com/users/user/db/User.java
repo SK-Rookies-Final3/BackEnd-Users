@@ -45,5 +45,5 @@ public class User  {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     @Column
-    private LocalDateTime LastAcceptedAt;
+    private LocalDateTime lastAcceptedAt;
 }
