@@ -24,5 +24,5 @@ public class UserDto {
     private String email;
     private UserRole role;
     private LocalDateTime createdat;
-    private LocalDateTime lastAccpetedat;
+    private LocalDateTime LastAcceptedat;
 }
