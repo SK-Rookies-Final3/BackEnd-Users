@@ -22,5 +22,5 @@ public class UserResponse {
     private String email;
     private UserRole role;
     private LocalDateTime createdAt;
-    private LocalDateTime lastAccpetedAt;
+    private LocalDateTime LastAcceptedAt;
 }

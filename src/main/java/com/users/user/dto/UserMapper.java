@@ -57,7 +57,7 @@ public class UserMapper {
                         .email(user.getEmail())
                         .role(user.getRole())
                         .createdAt(user.getCreatedAt())
-                        .lastAccpetedAt(user.getLastAccpetedAt())
+                        .lastAccpetedAt(user.getLastAcceptedAt())
                         .build())
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT, "UserEntity Null"));
     }
@@ -77,7 +77,7 @@ public class UserMapper {
                         .email(user.getEmail())
                         .role(user.getRole())
                         .createdAt(user.getCreatedAt())
-                        .lastAccpetedAt(user.getLastAccpetedAt())
+                        .lastAccpetedAt(user.getLastAcceptedAt())
                         .build())
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT, "UserEntity Null"));
     }
