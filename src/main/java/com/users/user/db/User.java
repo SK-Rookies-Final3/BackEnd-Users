@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(callSuper = false) // Lombok 경고 해결
 public class User  {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(nullable = false, unique = true)
     private String username;
